@@ -1,4 +1,4 @@
-#shopping-list-frontend
+# shopping-list-frontend
 
 Simple React App to demonstrate CICD to AWS S3 bucket using CodeBuild and CodePipeline.
 
