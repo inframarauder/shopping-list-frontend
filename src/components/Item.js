@@ -20,6 +20,19 @@ const Item = ({ item }) => {
 			});
 	};
 
+	const deleteItem = (id) => {
+		Api.deleteItem(id)
+			.then(() => {
+				listItems({ purchased: true });
+			})
+			.catch((err) => {
+				console.error(err);
+				if (err.response.data.message) {
+					alert(err.response.data.message);
+				}
+			});
+	};
+
 	return (
 		<div className="item">
 			<div className="item-name">
@@ -31,7 +44,11 @@ const Item = ({ item }) => {
 							placement="bottom"
 							overlay={<Tooltip id="purchased">Delete Item</Tooltip>}
 						>
-							<i className="fa fa-trash delete-icon" aria-hidden="true"></i>
+							<i
+								className="fa fa-trash delete-icon"
+								aria-hidden="true"
+								onClick={() => deleteItem(item._id)}
+							></i>
 						</OverlayTrigger>
 					) : (
 						<OverlayTrigger

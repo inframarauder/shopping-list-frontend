@@ -9,6 +9,7 @@ const api = axios.create({
 const Api = {
 	listItems: (params) => api.get("/list", { params }),
 	updateItem: (id, body) => api.put(`/update/${id}`, body),
+	deleteItem: (id) => api.delete(`/delete/${id}`),
 };
 
 export default Api;
