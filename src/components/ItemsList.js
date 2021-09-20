@@ -1,30 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Spinner } from "react-bootstrap";
 import Api from "../utils/api";
 import Item from "./Item";
+import { Context as ItemsContext } from "../contexts/ItemsContext";
 
-const ItemsList = ({ type }) => {
-	const [items, setItems] = useState([]);
+const ItemsList = ({ purchased }) => {
+	const { state, listItems } = useContext(ItemsContext);
+
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		const params = { purchased: type === "purchased" };
 		setLoading(true);
-		Api.listItems(params)
-			.then((response) => {
-				setItems(response.data.data);
-			})
-			.catch((error) => {
-				console.error(error);
-				setError(true);
-			});
-		setLoading(false);
-	});
+		const params = { purchased: purchased || false };
+		listItems(params, () => setLoading(false));
+	}, [purchased]);
 
-	return (
+	return loading ? (
+		<Spinner animation="border" variant="primary" />
+	) : (
 		<>
 			<div className="items-list">
-				{items.map((item) => (
+				{state.items.map((item) => (
 					<Item key={item._id} item={item} />
 				))}
 			</div>

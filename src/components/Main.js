@@ -17,11 +17,15 @@ const Body = () => {
 					</Nav.Item>
 				</Nav>
 				<Tab.Content>
-					<Tab.Pane eventKey="pending">
-						<ItemsList type="pending" />
+					<Tab.Pane eventKey="pending" mountOnEnter={true} unmountOnExit={true}>
+						<ItemsList />
 					</Tab.Pane>
-					<Tab.Pane eventKey="purchased">
-						<ItemsList type="purchased" />
+					<Tab.Pane
+						eventKey="purchased"
+						mountOnEnter={true}
+						unmountOnExit={true}
+					>
+						<ItemsList purchased={true} />
 					</Tab.Pane>
 				</Tab.Content>
 			</Tab.Container>
