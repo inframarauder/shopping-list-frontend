@@ -51,3 +51,29 @@
 	transition: 0.3s ease;
 	color: #fff;
 }
+
+.item {
+	border: 1px solid #1a3365;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.item-name {
+	font-size: 1.2rem;
+	margin-left: 10px;
+}
+
+.item-icons {
+	float: right;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.tick-icon:hover {
+	color: green;
+}
+
+.delete-icon:hover {
+	color: red;
+}
