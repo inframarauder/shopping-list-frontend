@@ -21,16 +21,18 @@ const Item = ({ item }) => {
 	};
 
 	const deleteItem = (id) => {
-		Api.deleteItem(id)
-			.then(() => {
-				listItems({ purchased: true });
-			})
-			.catch((err) => {
-				console.error(err);
-				if (err.response.data.message) {
-					alert(err.response.data.message);
-				}
-			});
+		if (window.confirm("Are you sure you want to delete this item?")) {
+			Api.deleteItem(id)
+				.then(() => {
+					listItems({ purchased: true });
+				})
+				.catch((err) => {
+					console.error(err);
+					if (err.response.data.message) {
+						alert(err.response.data.message);
+					}
+				});
+		}
 	};
 
 	return (

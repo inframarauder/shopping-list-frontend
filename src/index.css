@@ -54,6 +54,19 @@
 	align-items: center;
 }
 
+.form {
+	width: 50%;
+}
+
+.form-input {
+	border: 1px solid #1a3365;
+	border-radius: 5px;
+}
+
+.btn.btn-primary {
+	background-color: #1a3365;
+}
+
 .items-list {
 	padding: 10px;
 	width: 50%;
@@ -86,7 +99,15 @@
 }
 
 @media screen and (max-width: 500px) {
-	.items-list {
+	.items-list,
+	.form {
 		width: 100%;
+	}
+	.button-container {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 }
